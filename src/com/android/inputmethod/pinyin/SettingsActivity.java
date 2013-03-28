@@ -53,6 +53,8 @@ public class SettingsActivity extends PreferenceActivity implements
                 .findPreference(getString(R.string.setting_sound_key));
         mVibratePref = (CheckBoxPreference) prefSet
                 .findPreference(getString(R.string.setting_vibrate_key));
+		prefSet.removePreference(mVibratePref);
+		
         mPredictionPref = (CheckBoxPreference) prefSet
                 .findPreference(getString(R.string.setting_prediction_key));
         
@@ -82,7 +84,7 @@ public class SettingsActivity extends PreferenceActivity implements
     protected void onPause() {
         super.onPause();
         Settings.setKeySound(mKeySoundPref.isChecked());
-        Settings.setVibrate(mVibratePref.isChecked());
+        //Settings.setVibrate(mVibratePref.isChecked());
         Settings.setPrediction(mPredictionPref.isChecked());
 
         Settings.writeBack();
@@ -94,7 +96,7 @@ public class SettingsActivity extends PreferenceActivity implements
 
     private void updateWidgets() {
         mKeySoundPref.setChecked(Settings.getKeySound());
-        mVibratePref.setChecked(Settings.getVibrate());
+        //mVibratePref.setChecked(Settings.getVibrate());
         mPredictionPref.setChecked(Settings.getPrediction());
     }
 
